@@ -1,0 +1,8 @@
+<div>
+<!-- <a [routerLink]="['/routing']">Routing</a> |  -->
+
+<a *ngIf="statusAkash" [routerLink]="['/home']">Home</a>|
+<a *ngIf="statusRushikesh" [routerLink]="['/product']">product</a>|
+<a *ngIf="statusRushikesh" [routerLink]="['/aboutus']">about us</a>
+<router-outlet></router-outlet>
+</div>
