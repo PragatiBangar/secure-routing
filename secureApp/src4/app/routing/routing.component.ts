@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class RoutingComponent implements OnInit {
  
   role=localStorage.getItem("role");
-  statusAdmin=false;
-  statusUser=false;
+  statusAdmin:Boolean=false;
+  statusCustomer:Boolean=false;
  
  
  
@@ -19,8 +19,8 @@ export class RoutingComponent implements OnInit {
     if (this.role=="Admin"){
       this.statusAdmin=true;
     }
-    if (this.role=="User"){
-      this.statusAdmin=true;
+    if (this.role=="Customer"){
+      this.statusCustomer=true;
     }
   }
 }

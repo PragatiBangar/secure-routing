@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { HttpClient,HttpHeaders,HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient,private JWTHelper:JwtHelperService){}
   // users : User []=[
   //   {
   //     'userName':'Pragati',
@@ -52,7 +54,30 @@ export class AuthService {
   // }
 
   logIn(user:User):Observable<any>{
-    let url = "http://localhost:5150/users/authenticate";
+    let url = "http://localhost:5235/api/auth/authenticate";
     return this.http.post<User>(url,user);
   }
+  
+
+  getRoleFromToken():string {
+    const token = localStorage.getItem("jwt");
+    if(token){
+      const decodedToken:any = this.JWTHelper.decodeToken(token);
+      const role = localStorage.setItem('Roles',decodedToken.Roles)
+      return decodedToken.Roles;
+    }
+       return '';
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+

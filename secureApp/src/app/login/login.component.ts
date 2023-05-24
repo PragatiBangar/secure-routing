@@ -1,6 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit{
 
-  userName:string | any;
-  password:string | any;
+  user:User={email:'',
+             password:''};
+
   role : any;
   loggedIn :any;
   
@@ -19,17 +21,42 @@ export class LoginComponent implements OnInit{
   ngOnInit():void{
   }
   
-  onLogin(){
-    if(this.svc.logIn(this.userName,this.password)){
-      console.log("login successfull");
-      this.loggedIn = true; 
-      console.log("user is valid");
-      this.router.navigate(['/routing']); 
-      return true;
-    }
-    else{
-      console.log("login failed");
-      return false;
-    }
+  validUser:boolean=false;
+
+  logIn(){
+    this.svc.logIn(this.user).subscribe((response)=>{
+      localStorage.setItem("jwt",response.token);
+      if(this.user){
+        this.validUser=true;
+      }
+      const role = this.svc.getRoleFromToken();
+      console.log(role);
+      if(role=="Employee"){
+        const EmployeeId = this.svc.getEmployeeIdFromToken();
+        console.log(EmployeeId);
+      }
+      if(role=="Shipper"){
+        const EmployeeId = this.svc.getShipperIdFromToken();
+        console.log(EmployeeId);
+      }
+      if(role=="Supplier"){
+        const SupplierId = this.svc.getSupplierIdFromToken();
+        console.log(SupplierId);
+      }
+      if(role=="Customer"){
+        const CustomerId = this.svc.getCustomerIdFromToken();
+        console.log(CustomerId);
+      }
+      if(role=="Agridoctor"){
+        const AgridoctorId = this.svc.getAgridoctorIdFromToken();
+        console.log(AgridoctorId);
+      }
+      if(role=="Admin"){
+        const id = this.svc.getAdminIdFromToken();
+        console.log(id);
+      }
+    })
   }
 }
+
+
