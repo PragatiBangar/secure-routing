@@ -59,18 +59,52 @@ export class AuthService {
   }
   
 
-  getRoleFromLSAToken():string {
-
-    // get  token  from local storage
+  getRoleFromToken():string {
     const token = localStorage.getItem("jwt");
-    //if token available  decode  token and retrive role attached in token
     if(token){
       const decodedToken:any = this.JWTHelper.decodeToken(token);
-      localStorage.setItem('Roles',decodedToken.Roles)
+      const role = localStorage.setItem('Roles',decodedToken.Roles)
       return decodedToken.Roles;
     }
-       return 'norole';
-  }
+       return '';
+    }
+
+    getEmployeeIdFromToken():number{
+      const token:any = localStorage.getItem("jwt");
+      const decodedToken:any = this.JWTHelper.decodeToken(token);
+      return decodedToken.EmployeeId;
+    }
+
+    getShipperIdFromToken():number{
+      const token:any = localStorage.getItem("jwt");
+      const decodedToken:any = this.JWTHelper.decodeToken(token);
+      return decodedToken.ShipperId;
+    }
+
+    getCustomerIdFromToken():number{
+      const token:any = localStorage.getItem("jwt");
+      const decodedToken:any = this.JWTHelper.decodeToken(token);
+      return decodedToken.CustomerId;
+    }
+    
+    getSupplierIdFromToken():number{
+      const token:any = localStorage.getItem("jwt");
+      const decodedToken:any = this.JWTHelper.decodeToken(token);
+      return decodedToken.SupplierId;
+    }
+
+    getAgridoctorIdFromToken():number{
+      const token:any = localStorage.getItem("jwt");
+      const decodedToken:any = this.JWTHelper.decodeToken(token);
+      return decodedToken.AgridoctorId;
+    }
+
+    getAdminIdFromToken():number{
+      const token:any = localStorage.getItem("jwt");
+      const decodedToken:any = this.JWTHelper.decodeToken(token);
+      return decodedToken.id;
+    }
+
 }
 
 

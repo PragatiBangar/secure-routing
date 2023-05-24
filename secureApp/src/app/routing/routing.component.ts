@@ -7,42 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoutingComponent implements OnInit {
  
-  role=localStorage.getItem("Roles");
-  
-  statusAdmin:Boolean=false;
-  statusCustomer:Boolean=false;
-  statusEmployee:Boolean=false;
-  statusSupplier:Boolean=false;
-  statusShipper:Boolean=false;
-  statusAgridoctor:Boolean=false;
-  statusEmployeeCustomer:Boolean=false;
- 
+  token=localStorage.getItem("jwt");
+  status:Boolean=true;
+
   ngOnInit(): void {
-
-    console.log(this.role);
-
-    if (this.role=="Admin"){
-      this.statusAdmin=true;
-      alert("role is admin");
-    }
-    if (this.role=="Customer"){
-      this.statusCustomer=true;
-    }
-    if (this.role=="Employee"){
-      this.statusEmployee=true;
-    }
-    if (this.role=="Customer,Employee"){
-      this.statusEmployeeCustomer=true;
-      console.log(this.statusEmployeeCustomer);
-    }
-    if (this.role=="Supplier"){
-      this.statusSupplier=true;
-    }
-    if (this.role=="Shipper"){
-      this.statusShipper=true;
-    }
-    if (this.role=="Agridoctor"){
-      this.statusAgridoctor=true;
-    }
+  console.log(this.token);
+  if(this.token==null){
+      this.status=false;
+  }
+    
   }
 }

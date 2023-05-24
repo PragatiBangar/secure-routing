@@ -1,12 +1,21 @@
-<div>
+<div *ngIf="status">
 <!-- <a [routerLink]="['/routing']">Routing</a> |  -->
 
-<a *ngIf="statusAdmin" [routerLink]="['/home']">Home</a>|
-<br>
-<a *ngIf="statusCustomer" [routerLink]="['/product']">product</a>
-<br>
-<a *ngIf="statusEmployee" [routerLink]="['/aboutus']">aboutus</a>
-<br>
-<a *ngIf="statusEmployeeCustomer" [routerLink]="['/aboutus']">about</a>
-<router-outlet></router-outlet>
+<a [routerLink]="['/home']">Home</a>|
+
+<a [routerLink]="['/product']">product</a>|
+
+<a [routerLink]="['/aboutus']">aboutus</a>|
+
+<a [routerLink]="['/aboutus']">about</a>
 </div>
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+

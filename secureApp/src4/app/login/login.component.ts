@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit{
     console.log(response.token);
     localStorage.setItem("jwt",response.token);
     console.log(response);
-    const role =this.svc.getRoleFromToken();
+    const role =this.svc.getRoleFromLSAToken();
     console.log(role);
   })
 }
