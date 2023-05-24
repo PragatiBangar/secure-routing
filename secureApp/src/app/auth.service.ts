@@ -59,7 +59,7 @@ export class AuthService {
   }
   
 
-  getRoleFromToken():string {
+  getRoleFromLSAToken():string {
     const token = localStorage.getItem("jwt");
     if(token){
       const decodedToken:any = this.JWTHelper.decodeToken(token);

@@ -15,32 +15,13 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 
 export const routes : Routes=[
   {path:'' ,redirectTo:'/login' ,pathMatch:'full'},
-  {path:'login',component:LoginComponent},
+  // {path:'login',component:LoginComponent},
   {path:'routing' ,component:RoutingComponent},
     // {path:'' ,redirectTo:'routing' ,pathMatch:'full'},
-    { path:'home', component:HomeComponent },
-    { path:'product', component:ProductComponent },
-    { path:'aboutus', component:AboutusComponent  }
+    // { path:'home', component:HomeComponent },
+    // { path:'product', component:ProductComponent },
+    // { path:'aboutus', component:AboutusComponent  }
 ]
-
-
-
-
-// export const routes:Routes=[
-//   { path: '', redirectTo: '/login', pathMatch: 'full' },
-//   { path: 'login', component: LoginComponent },
-//   {
-//     path: 'routing',
-//     component: RoutingComponent,
-//     children: [
-//       { path: 'aboutus', component: AboutusComponent },
-//       { path: 'product', component: ProductComponent },
-//       { path: 'home', component: HomeComponent },
-      
-//     ]
-//   },
-// ]
-
 
 @NgModule({
   declarations: [

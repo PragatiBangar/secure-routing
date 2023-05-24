@@ -12,38 +12,53 @@ export class LoginComponent implements OnInit{
 
   user:User={email:'',
              password:''};
-
   role : any;
   loggedIn :Boolean=false;
-  signout : Boolean=false;
-  signin : Boolean=false;
-  status : Boolean=false;
+  btnSignOut : Boolean=false;
+  btnSignIn : Boolean=false;
+  loginFormVisible : Boolean=true;
+  validUser:Boolean=false;
 
   constructor(private svc :AuthService,private router:Router){}
   ngOnInit():void{
+    this.loginFormVisible=false;
+    this.btnSignIn=true;
   }
 
   logIn(){
     this.svc.logIn(this.user).subscribe((response)=>{
       localStorage.setItem("jwt",response.token);
       this.loggedIn=true;
-      this.signout=true;
-    })
-  }
+      this.btnSignIn=false;
+      this.loginFormVisible=false;
+      if(this.user){
+        this.validUser=true;
+        console.log(this.validUser);
+      }
+
+      const role =this.svc.getRoleFromLSAToken();
+      console.log("role from token");
+      console.log(role);
+
+    });
+    this.router.navigate(['/routing']);
+};
+
 
   login(){
-    this.signin=true;
-    this.status=true;
+    this.btnSignIn=false;
+    this.btnSignOut=true;
+    this.loginFormVisible=true;
   }
 
   logout(){
     this.loggedIn=false;
-    this.signin=false;
-    this.signout=false;
-    this.status=false;
-    localStorage.removeItem('jwt');
+    this.btnSignIn=true;
+    this.btnSignOut=false;
+    this.loginFormVisible=false;
+    localStorage.removeItem("jwt");
     localStorage.removeItem("Roles");
-    this.router.navigate(['']);
+    this.router.navigate(['/login']);
   }
       
 }
