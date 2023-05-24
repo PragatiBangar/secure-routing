@@ -1,30 +1,17 @@
 <h1>Home</h1>
 
-<div>
-<!-- <a [routerLink]="['/routing']">Routing</a> |  -->
-
-<a *ngIf="statusAdmin" [routerLink]="['routing/home']">Home</a>|
-
-<a *ngIf="statusAdmin" [routerLink]="['routing/product']">product</a>|
-
-<a *ngIf="statusCustomer" [routerLink]="['routing/aboutus']">aboutus</a>|
-
-<a *ngIf="statusCustomer" [routerLink]="['/routing/aboutus']">about</a>
-
-<router-outlet></router-outlet>
-</div>
-<!-- <div> -->
+<div> 
     <!-- <a [routerLink]="['/routing']">Routing</a> |  -->
     
-    <!-- <a *ngIf="statusAdmin" [routerLink]="['/home']">Home</a>|
+    <a *ngIf="statusAdmin" [routerLink]="['/home']">Home</a>|
     <br>
-    <a *ngIf="statusCustomer" [routerLink]="['/product']">product</a>
+    <a *ngIf="statusAdmin" [routerLink]="['/product']">product</a>
     <br>
-    <a *ngIf="statusEmployee" [routerLink]="['/aboutus']">aboutus</a>
+    <a *ngIf="statusCustomer" [routerLink]="['/aboutus']">aboutus</a>
     <br>
-    <a *ngIf="statusEmployeeCustomer" [routerLink]="['/aboutus']">about</a>
+    <a *ngIf="statusCustomer" [routerLink]="['/aboutus']">about</a>
     <router-outlet></router-outlet>
-    </div> -->
+    </div>
 
 
 

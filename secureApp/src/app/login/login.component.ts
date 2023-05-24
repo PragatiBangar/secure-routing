@@ -31,17 +31,14 @@ export class LoginComponent implements OnInit{
       this.loggedIn=true;
       this.btnSignIn=false;
       this.loginFormVisible=false;
-      if(this.user){
-        this.validUser=true;
-        console.log(this.validUser);
-      }
-
+      this.validUser=true;
+      console.log(this.validUser);
       const role =this.svc.getRoleFromLSAToken();
       console.log("role from token");
       console.log(role);
 
     });
-    this.router.navigate(['/routing']);
+    //this.router.navigate(['/routing']);
 };
 
 
@@ -56,9 +53,10 @@ export class LoginComponent implements OnInit{
     this.btnSignIn=true;
     this.btnSignOut=false;
     this.loginFormVisible=false;
+    this.validUser=false;
     localStorage.removeItem("jwt");
     localStorage.removeItem("Roles");
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
       
 }
